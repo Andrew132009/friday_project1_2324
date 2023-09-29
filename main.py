@@ -1,4 +1,4 @@
-import sys
+import game_functions as gf
 import pygame as pg
 from settings import Settings
 from ship import Ship
@@ -13,14 +13,8 @@ def run_game():
     ship = Ship(screen)
 
     while True:  # цикл игры
-        for event in pg.event.get():  # обработчик событий pygame
-            if event.type == pg.QUIT:
-                pg.quit()
-                sys.exit()
-
-        screen.fill(ai_settings.bg_color)
-        ship.blitme()
-        pg.display.flip()
+        gf.check_events()
+        gf.update_screen(ai_settings, screen, ship)
 
 
 run_game()
